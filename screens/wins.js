@@ -19,53 +19,16 @@ import Footer_Menu from "../components/common/footer_menu.js";
 import { useTheme } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
-  // grid: {
-  //   flex: 1,
-  //   flexDirection: "row",
-  //   width: "100%",
-  //   position: "absolute",
-  //   bottom: 0,
-  // },
-
   containerStyle: {
     boxShadow: "rgb(0 0 0 / 30%) 0px 0px px",
     backgroundColor: "transparent",
     height: "100%",
     width: "100%",
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
-
-  // btn: {
-  //   padding: 5,
-  //   width: "20%",
-  //   justifyContent: "center",
-  // },
-
-  // icon: {
-  //   padding: "50%",
-  //   resizeMode: "contain",
-  // },
-
-  // text: {
-  //   color: "#484644",
-  //   padding: 2,
-  //   fontSize: "80%",
-  //   textAlign: "center",
-  //   fontFamily: "Comfortaa",
-  //   fontWeight: "bold",
-  // },
-
-  // texton: {
-  //   color: "#484644",
-  //   padding: 2,
-  //   fontSize: "80%",
-  //   textAlign: "center",
-  //   fontFamily: "Comfortaa",
-  //   fontWeight: "bold",
-  // },
 
   scroll: {
     overflow: "hidden",
@@ -86,7 +49,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 0,
-    // backgroundColor: "#484644",
     alignItems: "center",
   },
 
@@ -210,8 +172,6 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 330,
     height: 450,
-    // justifyContent: "center",
-    // alignItems: "center",
     borderTopLeftRadius: 180,
     borderTopRightRadius: 180,
     justifyContent: "center",

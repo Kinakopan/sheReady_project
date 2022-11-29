@@ -8,30 +8,37 @@ import {
   StyleSheet,
   Text,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { useState } from "react";
 import { useTheme } from "@react-navigation/native";
 import { Button, IconButton } from "react-native-paper";
 import GoalView from "../components/goals/goalview.js";
 ("react-native");
-import ModelView from "../components/goals/goalview.js";
 import AddGoalPopup from "../components/goals/addgoalpop.js";
 import AddView from "../components/goals/addview.js";
 import TaskList from "../components/goals/taskList.js";
 import PopUp1 from "../components/goals/popup_1.js";
-// import PopUp2 from "../components/goals/popup_2.js";
 import Prof_Window from "../components/common/prof_window.js";
 import Footer_Menu from "../components/common/footer_menu.js";
 import { BlurView } from "expo-blur";
 
-
 const styles = StyleSheet.create({
+  sarearea: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    // justifyContent: "space-evenly",
+    alignItems: "flex-start",
+  },
+
   grid: {
     flex: 1,
     flexDirection: "row",
     width: "100%",
-    position: "absolute",
-    bottom: 0,
   },
 
   btn: {
@@ -64,12 +71,24 @@ const styles = StyleSheet.create({
   },
 
   scroll: {
+    display: "flex",
+    // marginLeft: "auto",
+    // marginRight "auto",
     width: "100%",
     flexDirection: "row",
   },
 
+  scrollview: {
+    display: "flex",
+  },
+
   taskcont: {
-    height: "100%",
+    display: "flex",
+    width: "100%",
+  },
+
+  taskbtn: {
+    width: "100%"
   },
 
 
@@ -94,143 +113,157 @@ export default function Goal({
     height: "80%",
     margin: "10%",
   };
+
+  const image = require("../assets/SC_Home/add.png");
+
+
   return (
-    <Provider>
-      <Portal>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-          }}
-          >
-          <Prof_Window nav={navigation} />
+    <SafeAreaView
+      style={styles.sarearea}>
+      <Provider>
+        <Portal>
           <View
             style={{
-              width: "100%",
-              height: "15%",
-              top: 40,
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
             }}
-          >
-            <Text
-              style={{
-                fontFamily: "Leky",
-                fontSize: 20,
-                top: 40,
-                color: "#484644",
-                textAlign: "center",
-              }}
             >
-              Goals
-            </Text>
-          </View>
-          <View style={{ width: "100%", height: "22%" }}>
-            <ScrollView horizontal style={styles.scroll}>
-              <GoalView number={2} txt={"Build Network"} />
-              <GoalView number={1} txt={"Be Proactive"} />
-              <GoalView number={3} txt={"Find Mentor"} />
-              {addDone === true && <GoalView number={1} />}
-              <AddView action={showModal} />
-            </ScrollView>
-          </View>
-          <View
-            style={{
-              width: "100%",
-              height: "8%",
-              top: 10,
-            }}
-          >
-            <Text
+            <Prof_Window nav={navigation} />
+            <View
               style={{
-                fontFamily: "Comfortaa",
-                fontSize: 20,
-                fontWeight: 600,
-                top: 10,
-                color: "#484644",
-                textAlign: "center",
+                width: "100%",
+                display: "flex",
               }}
-            >
-              ONGOING TASK
-            </Text>
-          </View>
-          <ScrollView vertical>
-            <View style={styles.taskcont}>
-              <Button onPress={showPop} style={styles.taskbtn}>
-                <TaskList
-                  tasknum={"Task1"}
-                  task={"Get the mentor’s advice - design ideas"}
-                  due={"Due: Nov,28,2022"}
-                  progress={"3/6"}
-                  progressNum={0.5}
-                />
-              </Button>
-              <Button onPress={showPop} style={styles.taskbtn}>
-                <TaskList
-                  tasknum={"Task2"}
-                  task={"Checking progress with mentor"}
-                  due={"Due: Nov,30,2022"}
-                  progress={"8/10"}
-                  progressNum={0.8}
-                />
-              </Button>
+              >
+              <Text
+                style={{
+                  fontFamily: "Leky",
+                  fontSize: 20,
+                  // top: 40,
+                  color: "#484644",
+                  textAlign: "center",
+                }}
+              >
+                Goals
+              </Text>
             </View>
-          </ScrollView>
-          <View style={styles.grid}>
-            <Button
-              mode="text"
-              onPress={() => navigation.navigate("Home")}
-              style={styles.btn}
-            >
-              <View>
-                <Image
-                  style={styles.icon}
-                  // source={require("../assets/svg/home.png")}
+            <View style={{
+                width: "100%",
+                height: "22%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+              <ScrollView horizontal style={styles.scroll}>
+                <GoalView
+                  number={0}
+                  txt={"Add Goal"}
+                  source={require(`../assets/SC_Home/add.png`)}
                 />
-                <Text style={styles.text}>Home</Text>
+                <GoalView number={1} txt={"Be Proactive"} />
+                <GoalView number={2} txt={"Build Network"} />
+                <GoalView number={3} txt={"Find Mentor"} />
+                {addDone === true && <GoalView number={1} />}
+                <AddView action={showModal} />
+              </ScrollView>
+            </View>
+            <View
+              style={{
+                width: "100%",
+                height: "8%",
+                top: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Comfortaa",
+                  fontSize: 20,
+                  fontWeight: 600,
+                  top: 10,
+                  color: "#484644",
+                  textAlign: "center",
+                }}
+              >
+                ONGOING TASK
+              </Text>
+            </View>
+            <ScrollView
+              vertical
+              style={styles.scrollview}>
+              <View style={styles.taskcont}>
+                <Button onPress={showPop} style={styles.taskbtn}>
+                  <TaskList
+                    tasknum={"Task1"}
+                    task={"Get the mentor’s advice - design ideas"}
+                    due={"Due: Nov,28,2022"}
+                    progress={"3/6"}
+                    progressNum={0.5}
+                  />
+                </Button>
+                <Button onPress={showPop} style={styles.taskbtn}>
+                  <TaskList
+                    tasknum={"Task2"}
+                    task={"Checking progress with mentor"}
+                    due={"Due: Nov,30,2022"}
+                    progress={"8/10"}
+                    progressNum={0.8}
+                  />
+                </Button>
+                <Button onPress={showPop} style={styles.taskbtn}>
+                  <TaskList
+                    tasknum={"Task3"}
+                    task={"Implementing amendment"}
+                    due={"Due: Dec,2,2022"}
+                    progress={"9/10"}
+                    progressNum={0.9}
+                  />
+                </Button>
               </View>
-            </Button>
+            </ScrollView>
 
             <Footer_Menu action={navigation}></Footer_Menu>
 
+            <Modal
+              visible={popVisible}
+              onDismiss={hidePop}
+              contentContainerStyle={containerStyle}
+            >
+            <TouchableOpacity
+              onPress={hidePop}
+            >
+            <BlurView
+                blurType="light"
+                style={{
+                height: "100%",
+                width: "100%",
+                justifyContent: "center",
+                alignSelf: "center"
+              }}
+            >
+
+              <PopUp1 action={hidePop} />
+            </BlurView>
+            </TouchableOpacity>
+            </Modal>
+
+            <Modal
+              visible={visible}
+              onDismiss={hideModal}
+              contentContainerStyle={containerStyle}
+            >
+              <IconButton
+                onPress={hideModal}
+                icon="close-outline"
+                iconColor={colors.text}
+                style={{ position: "absolute", right: 0, top: "20%" }}
+              ></IconButton>
+              <AddGoalPopup action={onAddDone} hide={hideModal} />
+            </Modal>
           </View>
-
-          <Modal
-            visible={popVisible}
-            onDismiss={hidePop}
-            contentContainerStyle={containerStyle}
-          >
-          <TouchableOpacity
-            onPress={hidePop}
-          >
-          <BlurView
-              blurType="light"
-              style={{
-              height: "100%",
-              width: "100%",
-              justifyContent: "center",
-              alignSelf: "center"
-            }}
-          >
-
-            <PopUp1 action={hidePop} />
-          </BlurView>
-          </TouchableOpacity>
-          </Modal>
-
-          <Modal
-            visible={visible}
-            onDismiss={hideModal}
-            contentContainerStyle={containerStyle}
-          >
-            <IconButton
-              onPress={hideModal}
-              icon="close-outline"
-              iconColor={colors.text}
-              style={{ position: "absolute", right: 0, top: "20%" }}
-            ></IconButton>
-            <AddGoalPopup action={onAddDone} hide={hideModal} />
-          </Modal>
-        </View>
-      </Portal>
-    </Provider>
+        </Portal>
+      </Provider>
+    </SafeAreaView>
   );
 }

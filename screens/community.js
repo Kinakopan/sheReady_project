@@ -160,8 +160,8 @@ export default function Community({
             style={styles.homecont}
             >
 
-
-            <View style={styles.newscont}>
+            {/* Main visual same as HOME page */}
+            {/* <View style={styles.newscont}>
               <View
                 style={styles.wrap1}
                 >
@@ -189,7 +189,7 @@ export default function Community({
                     source={require("../assets/SC_Home/stairs.png")}/>
                 </View>
               </View>
-            </View>
+            </View> */}
 
 
 
