@@ -28,12 +28,14 @@ const styles = StyleSheet.create({
   title: {
     backgroundColor: "#484644",
     position: "absolute",
-    borderRadius: 80,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingTop: 7,
+    paddingLeft: 20,
+    paddingRight: 20,
     width: 150,
-    height: 30,
-    zIndex: 10,
+    height: 50,
+    zIndex: 0,
     textAlign: "center",
     padding: 5,
     left: 30,
@@ -69,8 +71,9 @@ export default function TaskList(props) {
         <Text
           style={{
             color: "#F3EAE2",
-            fontWeight: "500",
-            fontSize: 15,
+              fontWeight: "400",
+              fontSize: 15,
+              fontFamily: "Comfortaa",
           }}
         >
           {props.tasknum}

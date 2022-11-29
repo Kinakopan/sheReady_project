@@ -5,10 +5,6 @@ import { useTheme } from "@react-navigation/native";
 import styled from "styled-components/native";
 import Menu_Popup from "./menu_popup";
 
-// testing
-const MyWrapCont = styled.View`
-  border: ${(props) => props.btnBdrClr} !important;
-`;
 const styles = StyleSheet.create({
   profWrap: {
     width: "100%",
