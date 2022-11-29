@@ -47,6 +47,16 @@ const PopUp1 = ({ action }) => {
   };
 
   const styles = StyleSheet.create({
+    sarearea: {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flex: 1,
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+
     title: {
       color: "#F3EAE2",
       fontSize: 24,
@@ -102,7 +112,8 @@ const PopUp1 = ({ action }) => {
   });
 
   return (
-    <View>
+    <View
+      style={styles.sarearea}>
       <Modal
           visible={visible}
           onDismiss={hideModal}
@@ -117,10 +128,14 @@ const PopUp1 = ({ action }) => {
 
           <View
             style={{
-              width: "100%"
+              width: "100%",
             }}
           >
-            <View style={[styles.bottomLine, {paddingBottom: 30, paddingTop: 30}]}>
+            <View
+              style={[styles.bottomLine, {
+                paddingBottom: 30,
+                paddingTop: 30,
+              }]}>
               <Text style={styles.textL}>Have you Finish</Text>
               <Text style={styles.textL}>your task for</Text>
               <Text style={styles.textL}>today?</Text>
@@ -148,7 +163,7 @@ const PopUp1 = ({ action }) => {
                 </Text>
 
             <TouchableOpacity onPress={()=>adjustCount(1)}>
-               <Image
+              <Image
                 source={require("../../assets/SC_Goals/icon_plus.png")}
                 style={{width: 30, height: 30, }}
               />

@@ -229,35 +229,59 @@ export default function Goal({
               visible={popVisible}
               onDismiss={hidePop}
               contentContainerStyle={containerStyle}
-            >
-            <TouchableOpacity
-              onPress={hidePop}
-            >
-            <BlurView
-                blurType="light"
-                style={{
-                height: "100%",
-                width: "100%",
-                justifyContent: "center",
-                alignSelf: "center"
-              }}
-            >
 
-              <PopUp1 action={hidePop} />
-            </BlurView>
-            </TouchableOpacity>
+
+
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                // backgroundColor: "gray",
+                marginTop: -10,
+              }}
+              >
+              <TouchableOpacity
+                onPress={hidePop}
+              >
+                <BlurView
+                    blurType="light"
+                    style={{
+                      height: 800,
+                      width: 600,
+                      justifyContent: "flex-start",
+                      alignSelf: "center",
+                    }}
+                >
+                  <PopUp1 action={hidePop} />
+                </BlurView>
+              </TouchableOpacity>
             </Modal>
 
             <Modal
               visible={visible}
               onDismiss={hideModal}
               contentContainerStyle={containerStyle}
-            >
+              // style={{
+              //   height: "100%",
+              //   display: "flex",
+              //   justifyContent: "center"
+              // }}
+              >
               <IconButton
                 onPress={hideModal}
                 icon="close-outline"
                 iconColor={colors.text}
-                style={{ position: "absolute", right: 0, top: "20%" }}
+                style={{
+                  // position: "absolute",
+                  // right: 0,
+                  // top: "20%"
+
+                // height: "100%",
+                // display: "flex",
+                // justifyContent: "center"
+                  }}
               ></IconButton>
               <AddGoalPopup action={onAddDone} hide={hideModal} />
             </Modal>

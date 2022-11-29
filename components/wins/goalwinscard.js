@@ -8,12 +8,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+
   list: {
     margin: 0,
     flex: 1,
     width: "90%",
     marginBottom: 50,
   },
+
   container: {
     display: "flex",
     alignItems: "center",
@@ -104,7 +106,7 @@ export default function Goalwinscard(props) {
         <View style={styles.title}>
           <Text
             style={{
-              color: "white",
+              color: "#F3EAE2",
               fontWeight: "400",
               fontSize: 15,
               fontFamily: "Comfortaa",
