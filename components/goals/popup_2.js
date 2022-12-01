@@ -22,6 +22,17 @@ const PopUp2 = ({ hide }) => {
   };
 
   const styles = StyleSheet.create({
+    sarearea: {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flex: 1,
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: -200,
+    },
+
     title: {
       color: "#F3EAE2",
       fontSize: 25,
@@ -65,7 +76,8 @@ const PopUp2 = ({ hide }) => {
   });
 
   return (
-    <View>
+    <View
+      style={styles.sarearea}>
       <Modal
         visible={visible}
         onDismiss={hideModal}
@@ -121,7 +133,7 @@ const PopUp2 = ({ hide }) => {
             <Button
               mode="outlined"
               style={styles.button}
-              onPress={hideModal}
+              action={hideModal}
               onPressOut={hide}
               textColor= "white"
             >

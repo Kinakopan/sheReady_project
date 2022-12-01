@@ -254,13 +254,14 @@ export default function Goal({
                       alignSelf: "center",
                     }}
                 >
-                  <PopUp1 action={hidePop} />
+                  <PopUp1 action={[hidePop, hideModal]} />
                 </BlurView>
               </TouchableOpacity>
             </Modal>
 
             <Modal
               visible={visible}
+              // onDismiss={hideModal}
               onDismiss={hideModal}
               contentContainerStyle={containerStyle}
               // style={{

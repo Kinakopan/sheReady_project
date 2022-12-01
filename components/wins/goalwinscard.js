@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import * as React from "react";
-import { IconButton, Checkbox } from "react-native-paper";
+import { IconButton } from "react-native-paper";
+import Checkbox from 'expo-checkbox';
 
 const styles = StyleSheet.create({
   list_cont: {
@@ -99,7 +100,9 @@ const styles = StyleSheet.create({
 
 export default function Goalwinscard(props) {
   const [onExpand, setOnExpand] = React.useState(true);
-  const [checked, setChecked] = React.useState(false);
+  // const [checked, setChecked] = React.useState(false);
+  const [isChecked, setChecked] = React.useState(false);
+
   return (
     <View style={styles.list_cont}>
       <View style={styles.list}>
@@ -117,16 +120,13 @@ export default function Goalwinscard(props) {
         </View>
 
         <View style={styles.container}>
-          <Checkbox
-            style={{
 
-            }}
-            color={"#000"}
-            status={checked ? "checked" : "unchecked"}
-            onPress={() => {
-              setChecked(!checked);
-            }}
-            />
+          <Checkbox
+            style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? '#4630EB' : undefined}
+          />
           <Text style={styles.txt}>{props.taskName}</Text>
           <IconButton
             onPress={() => setOnExpand(!onExpand)}
@@ -146,19 +146,13 @@ export default function Goalwinscard(props) {
             <Text style={styles.selecttxt}>
               Invite the mentor to participate in usability test
             </Text>
-            <Checkbox
-              style={{
-                width: 20,
-                height: 20,
-                backgroundColor: "pink",
-                display: "flex"
-              }}
-              color="white"
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
-            />
+                      <Checkbox
+            style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? '#4630EB' : undefined}
+          />
+
           </View>
           <View style={styles.selectline}>
             <IconButton
@@ -169,13 +163,13 @@ export default function Goalwinscard(props) {
             <Text style={styles.selecttxt}>
               Get the mentor's advice on how to explain design ideas{" "}
             </Text>
-            <Checkbox
-              color="white"
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
-            />
+                      <Checkbox
+            style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? '#4630EB' : undefined}
+          />
+
           </View>
         </View>
       </View>

@@ -16,6 +16,9 @@ import { Button, IconButton } from "react-native-paper";
 ("react-native");
 import { useTheme } from "@react-navigation/native";
 import { Picker } from "@react-native-picker/picker";
+import { deleteDoc } from "firebase/firestore";
+import { getDoc, doc, addDoc, setDoc, collection } from "firebase/firestore";
+import { auth, db } from "../../firebaseConfig";
 // import { ScrollView } from "react-native-web";
 
 const styles = StyleSheet.create({
@@ -119,6 +122,14 @@ const styles = StyleSheet.create({
     paddingTop: 4,
   },
   btnPress: {
+    backgroundColor: "#484644",
+    height: 26,
+    width: 26,
+    borderRadius: 26 / 2,
+    alignItems: "center",
+    paddingTop: 4,
+  },
+  onPress: {
     backgroundColor: "#484644",
     height: 26,
     width: 26,
@@ -264,31 +275,71 @@ const styles = StyleSheet.create({
 
 export default function TaskPopup({ action }) {
   const { colors } = useTheme();
-  const [currentJob, onCurrentJob] = React.useState();
-  const [idealJob, onIdealJob] = React.useState();
+  const [currentJob, onCurrentJob] = React.useState("NA");
+  const [idealJob, onIdealJob] = React.useState("NA");
   const [setpnum, setStepNum] = React.useState(0);
   const [selectedCategory, setSelectedCategory] =
     React.useState("Pick a category");
-  const [task, onTask] = React.useState();
-  const [Month, setMonth] = React.useState();
-  const [Date, setDate] = React.useState();
-  const [Year, setYear] = React.useState();
-  const [Time, setTime] = React.useState();
-  const [Hour, setHour] = React.useState();
-  const [Minute, setMinute] = React.useState();
+  const [task, onTask] = React.useState("NA");
+  const [Month, setMonth] = React.useState("NA");
+  const [Date, setDate] = React.useState("NA");
+  const [Year, setYear] = React.useState("NA");
+  const [Time, setTime] = React.useState("NA");
+  const [Hour, setHour] = React.useState("NA");
+  const [Minute, setMinute] = React.useState("NA");
+  const [goalObj, setGoal] = React.useState({});
 
   const onNext = () => {
+    console.log("next");
     setStepNum(setpnum + 1);
   };
 
   const onBack = () => {
     setStepNum(setpnum - 1);
   };
+  const addGoal = async () => {
+    // await db.collection("goals").add(goalObj)
+    // await addDoc(collection(db, "goals"), goalObj);
+    // await setDoc(collection(db, "goals", "goals-id"), goalObj);
+    await setDoc(doc(db, "goals", "goals-id"), goalObj);
+
+  }
+  const saveGoal = async () => {const goalObj = { currentJob: currentJob, idealJob: idealJob, setpnum: setpnum, selectedCategory: selectedCategory, task: task, Date: Date, Year: Year, Month: Month, Time: Time, Hour: Hour, Minute: Minute}
+
+  console.log(goalObj);
+
+  await setDoc(doc(db, "goals", "currentJob"), goalObj);
+
+
+  // console.log(getDoc(doc(db, "goals")))
+  // console.log(await getDoc(doc(db, "goals", "currentJob")))
+  // console.log(await getDoc(doc(db, "goals", "currentJob")).data())
+  // console.log(await getDoc(doc(db, "goals", "currentJob")).then(doc => { console.log(doc)}))
+  // console.log(await db.collection("goals").where("userEmail", "==", auth.currentUser.userEmail).get().then((querySnapshot) => {return querySnapshot.docs}))
+const docRef = doc(db, "goals");
+
+  const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+} else {
+  // doc.data() will be undefined in this case
+  console.log("No such document!");
+}
+
+  // action()
+}
 
   const [goal, onGoal] = React.useState();
 
   //Run week repeat buttons >>>>>>>>>>>>>>>>>>>>>>
-  const [isPress, setIsPress] = React.useState(false);
+  const [isPress1, setIsPress1] = React.useState(false);
+  const [isPress2, setIsPress2] = React.useState(false);
+  const [isPress3, setIsPress3] = React.useState(false);
+  const [isPress4, setIsPress4] = React.useState(false);
+  const [isPress5, setIsPress5] = React.useState(false);
+  const [isPress6, setIsPress6] = React.useState(false);
+  const [isPress7, setIsPress7] = React.useState(false);
 
   const touchProps = {
     activeOpacity: 2,
@@ -801,71 +852,71 @@ export default function TaskPopup({ action }) {
 
               <View style={styles.repeatRow}>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress1 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress1(!isPress1)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress1 ? styles.txtPress : styles.txtNormal}
                   >
                     S
                   </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress2 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress2(!isPress2)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress2 ? styles.txtPress : styles.txtNormal}
                   >
                     M
                   </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress3 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress3(!isPress3)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress3 ? styles.txtPress : styles.txtNormal}
                   >
                     T
                   </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress4 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress4(!isPress4)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress4 ? styles.txtPress : styles.txtNormal}
                   >
                     W
                   </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress5 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress5(!isPress5)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress5 ? styles.txtPress : styles.txtNormal}
                   >
                     T
                   </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress6 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress6(!isPress6)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress6 ? styles.txtPress : styles.txtNormal}
                   >
                     F
                   </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={styles.isPress ? styles.btnPress : styles.btnNormal}
-                  {...touchProps}
+                  style={isPress7 ? styles.btnPress : styles.btnNormal}
+                  onPress={() =>setIsPress7(!isPress7)}
                 >
                   <Text
-                    style={styles.isPress ? styles.txtPress : styles.txtNormal}
+                    style={isPress7 ? styles.txtPress : styles.txtNormal}
                   >
                     S
                   </Text>
@@ -1129,7 +1180,7 @@ export default function TaskPopup({ action }) {
         {setpnum === 3 && (
           <View style={{flexDirection: "row"}}>
           <Button style={styles.btn} onPress={onBack} textColor="black" labelStyle={styles.buttontxt}>Back</Button>
-          <Button style={styles.btn} onPress={action} textColor="black" labelStyle={styles.buttontxt}> Done</Button>
+          <Button style={styles.btn} onPress={saveGoal} textColor="black" labelStyle={styles.buttontxt}> Done</Button>
           </View>
         )}
         </TouchableOpacity>

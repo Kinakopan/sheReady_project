@@ -87,8 +87,7 @@ export default function AddGoalPopup({ action, hide }) {
   const [currentJob, onCurrentJob] = React.useState();
   const [idealJob, onIdealJob] = React.useState();
   const [setpnum, setStepNum] = React.useState(1);
-  const [selectedCategory, setSelectedCategory] =
-    React.useState("Pick a category");
+  const [selectedCategory, setSelectedCategory] = React.useState("Pick a category");
   const [task, onTask] = React.useState();
   const [Month, setMonth] = React.useState();
   const [Date, setDate] = React.useState();
@@ -96,14 +95,30 @@ export default function AddGoalPopup({ action, hide }) {
   const [Time, setTime] = React.useState();
   const [Hour, setHour] = React.useState();
   const [Minute, setMinute] = React.useState();
+  const [goalObj, setGaolObj] = useState({})
 
   const onNext = () => {
+    console.log("Next")
     setStepNum(setpnum + 1);
   };
 
   const onBack = () => {
     setStepNum(setpnum - 1);
   };
+  const addGoal = async () => {
+    await db.collection("goals").add(goalObj)
+  }
+  const saveGoal = async () => {setGoal({ currentJob: currentJob, idealJob: idealJob, setpnum: setpnum, selectedCategory: selectedCategory, task: task, Date: Date, Year: Year, Month: Month, Time: Time, Hour: Hour, Minute: Minute}
+
+  )
+  addGoal()
+
+  console.log(await db.collection("goals").where("userEmail", "==", auth.currentUser.userEmail).get().then((querySnapshot) => {return querySnapshot.docs}))
+
+  // action()
+}
+
+  // {goalString: "your goal string", goalSteps: "total ongoing task steps", goalCompleted: "total complete ongoing task  part"}
 
   return (
     <View
@@ -545,19 +560,26 @@ export default function AddGoalPopup({ action, hide }) {
 
       <View style={styles.buttoncont}>
         {setpnum > 0 && (
-          <Button style={styles.btn} onPress={onBack}>
-            <Text style={styles.buttontxt}>Back</Text>
+          <Button style={styles.btn}
+          // onPress={onBack}
+          >
+            <Text style={[styles.buttontxt, {backgroundColor: "black"}]}>Back</Text>
           </Button>
         )}
 
         {setpnum < 3 && (
-          <Button style={styles.btn} onPress={onNext}>
+          <Button style={styles.btn}
+          // onPress={onNext}
+          >
             <Text style={styles.buttontxt}>Next</Text>
           </Button>
         )}
 
         {setpnum === 3 && (
-          <Button style={styles.btn} onPress={action} onPressOut={hide}>
+          <Button style={styles.btn}
+          // onPress={saveGoal}
+          // onPressOut={hide}
+          >
             <Text style={styles.buttontxt}>Done</Text>
           </Button>
         )}

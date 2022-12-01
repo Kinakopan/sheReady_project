@@ -16,7 +16,41 @@ import Export_All from "../components/wins/export_all.js";
 import Prof_Window from "../components/common/prof_window.js";
 import Footer_Menu from "../components/common/footer_menu.js";
 // import { Colors } from "react-native/Libraries/NewAppScreen";
-import { useTheme } from "@react-navigation/native";
+import { useTheme } from "@react-navigation/native";import * as Print from "expo-print";
+import * as Sharing from "expo-sharing";
+
+const pdf =`
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pdf Content</title>
+        <style>
+            body {
+                font-size: 16px;
+                color: "black";
+            }
+            h1 {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Good job! Here are your accomplished work!</h1>
+        <p>Test Test Test Test Test Test Test </p>
+    </body>
+    </html>
+;
+`
+
+const exportPDF = async() => {
+const file = await Print.printToFileAsync({
+  html: pdf,
+  base64: false
+  });
+await Sharing.shareAsync(file.uri);}
+
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -313,7 +347,7 @@ export default function Wins({
                         style={[styles.methodbtn_1, {
                           backgroundColor: colors.card,
                         }]}
-                        onPress={hideModal}
+                        onPress={exportPDF}
                       >
                         <Image
                           style={styles.img_1}
