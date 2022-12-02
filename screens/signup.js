@@ -11,11 +11,11 @@ import {
   Alert,
 } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc,setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import MyTextInput from "../components/common/mytextinput";
 import GateButton from "../components/common/gatebutton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { auth,db } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig";
 
 const styles = StyleSheet.create({
   headerTxt: {
@@ -25,10 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Signup({
-  navigation,
-  action,
-  }) {
+export default function Signup({ navigation }) {
   const [userName, onChangeUserName] = React.useState("");
   const [password, onChangePassword] = React.useState("");
   const [email, onChangeEmail] = React.useState("");
@@ -56,22 +53,14 @@ export default function Signup({
           email,
           userName,
           password
-        ).then(async () => {
-          try {
-            const docRef = await doc(
-              setDoc(db, "users", auth.currentUser.uid),
-              {
-                uid: auth.currentUser.uid,
-                displayName: userName,
-                email: email,
-              }
-            );
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
+        );
+        const uid = user.user.uid;
+        await setDoc(doc(db, "users", uid), {
+          name: userName,
+          email: email,
+          firstuser: true,
+          password: password,
         });
-        console.log(user);
         Alert.alert(
           "Register Account",
           "Registered Your Account Successfully",
