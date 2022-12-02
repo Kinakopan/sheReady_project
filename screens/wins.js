@@ -21,26 +21,74 @@ import * as Sharing from "expo-sharing";
 
 const pdf =`
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pdf Content</title>
-        <style>
-            body {
-                font-size: 16px;
-                color: "black";
-            }
-            h1 {
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Good job! Here are your accomplished work!</h1>
-        <p>Test Test Test Test Test Test Test </p>
-    </body>
-    </html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pdf Content</title>
+    <style>
+        body {
+          padding: 30px;
+          font-size: 20px;
+          color: "black";
+        }
+        h1 {
+          font-size: 48px;
+          text-align: center;
+          font-weight: bold;
+        }
+        span {
+          text-align: center;
+          display: block;
+        }
+        p {
+          font-size: 20px;
+          // font-weight: bold;
+          text-align: right;
+          display: block;
+          width: 100%;
+        }
+        h2 {
+          font-size: 32px;
+          font-weight: bold;
+        }
+        ul {
+
+        }
+        li {
+          font-size: 24px;
+          // list-style: none;
+          margin-bottom: 15px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h1>Accomplished goals</h1>
+    <span>- Minyoung Bae -</span>
+    <p>December 2, 2022 </p>
+
+    <h2>Goal: Find a mentor and seek advide</h2>
+    <ul>
+      <li>Task 1: Inivte the mentor to participate in usability teset</li>
+      <li>Task 2: Get the mentor's advice on how to explain design ideas</li>
+    </ul>
+
+    <h2>Goal: Be proactive</h2>
+    <ul>
+      <li>Task 1: Reaching out to a colleague a few days ahead of a cross-functional deadline to check in on their progress and offer support.</li>
+      <li>Task 2: Blocking time on your manager’s calendar well in advance to review an important project.</li>
+      <li>Task 3: Creating calendar reminders for recurring tasks you might have forgotten in the past.</li>
+    </ul>
+
+    <h2>Goal: Form a good bond with developers</h2>
+    <ul>
+      <li>Task 1: Know what you need from your colleagues.</li>
+      <li>Task 2: Practice active listening.</li>
+      <li>Task 3: Make time for your coworkers.</li>
+    </ul>
+  </body>
+  </html>
 ;
 `
 

@@ -96,6 +96,10 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     paddingTop: 8,
   },
+
+  checkbox: {
+    marginRight: 20,
+  },
 });
 
 export default function Goalwinscard(props) {
@@ -125,7 +129,7 @@ export default function Goalwinscard(props) {
             style={styles.checkbox}
             value={isChecked}
             onValueChange={setChecked}
-            color={isChecked ? '#4630EB' : undefined}
+            color={isChecked ? '#484644' : undefined}
           />
           <Text style={styles.txt}>{props.taskName}</Text>
           <IconButton
@@ -133,6 +137,9 @@ export default function Goalwinscard(props) {
             icon="chevron-down"
             iconColor="#572516"
             size={40}
+            style={{
+              marginLeft: -15,
+            }}
           />
         </View>
 
@@ -146,12 +153,6 @@ export default function Goalwinscard(props) {
             <Text style={styles.selecttxt}>
               Invite the mentor to participate in usability test
             </Text>
-                      <Checkbox
-            style={styles.checkbox}
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? '#4630EB' : undefined}
-          />
 
           </View>
           <View style={styles.selectline}>
@@ -163,13 +164,6 @@ export default function Goalwinscard(props) {
             <Text style={styles.selecttxt}>
               Get the mentor's advice on how to explain design ideas{" "}
             </Text>
-                      <Checkbox
-            style={styles.checkbox}
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? '#4630EB' : undefined}
-          />
-
           </View>
         </View>
       </View>

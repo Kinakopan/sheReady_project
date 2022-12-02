@@ -6,12 +6,13 @@ const styles = StyleSheet.create({
   list: {
     margin: 40,
     marginTop: 0,
+    alignItems: "center"
   },
   container: {
     borderRadius: 30,
     borderBottomLeftRadius: 0,
     elevation: 5,
-    width: "100%",
+    width: 380,
     height: 100,
     backgroundColor: "#ECD8D0",
     padding: 15,

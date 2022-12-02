@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
   profName: {
     color: "#F2E4D9",
     padding: 2,
-    fontSize: 32,
+    fontSize: 28,
     textAlign: "center",
-    fontFamily: "South",
+    fontFamily: "ComfortaaL",
     fontWeight: 400,
   },
   grid: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     padding: 5,
-    paddingLeft: "50%",
+    paddingLeft: "45%",
     width: "100%",
     justifyContent: "center",
     alignItems: "flex-start",
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#F2E4D9",
     padding: 2,
-    fontSize: 14,
+    fontSize: 20,
     textAlign: "center",
     fontFamily: "Comfortaa",
     fontWeight: "400",
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   text_home: {
     color: "#F2E4D9",
     padding: 2,
-    fontSize: 14,
+    fontSize: 20,
     textAlign: "center",
     fontFamily: "Comfortaa",
     fontWeight: "400",

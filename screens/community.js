@@ -204,11 +204,19 @@ export default function Community({
                 img={require("../assets/SC_Home/mv3.jpg")}
               />
               <WinsCard
-                userName={"Julissa Song"}
-                date={"Nov, 28, 2022"}
-                progress={"3/6"}
+                userName={"Minyoung Bae"}
+                date={"Sep, 10, 2022"}
+                progress={"4/6"}
                 wins={"Get the mentor's advice for 6 days in a row!"}
-                img={require("../assets/SC_Home/mv3.jpg")}
+                img={require("../assets/common/profile2.png")}
+              />
+
+              <WinsCard
+                userName={"Mio Takagi"}
+                date={"Jul, 28, 2022"}
+                progress={"2/6"}
+                wins={"Get the mentor's advice for 6 days in a row!"}
+                img={require("../assets/common/profile1.png")}
               />
             </View>
 

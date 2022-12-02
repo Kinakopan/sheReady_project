@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import { ProgressBar, MD3Colors } from "react-native-paper";
+import { ProgressBar, MD3Colors, IconButton } from "react-native-paper";
 import * as React from "react";
+import { useState } from "react";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
 
 const styles = StyleSheet.create({
   list: {
     marginHorizontal: 40,
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 20
   },
 
   container: {
@@ -13,7 +17,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 0,
     elevation: 5,
     width: "100%",
-    height: 120,
+    height: 130,
     backgroundColor: "#ECD8D0",
     padding: 15,
     shadowColor: "#000",
@@ -23,14 +27,16 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    margin: 0
+    margin: 0,
+    justifyContent: "space-between"
   },
 
   userCont: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
-    marginTop: -10
+    marginBottom: 0,
+    marginTop: -10,
+    justifyContent: "space-between"
   },
 
   userCont2: {
@@ -86,6 +92,11 @@ const styles = StyleSheet.create({
 });
 
 export default function WinsCard(props) {
+  // const [active, setActive] = React.useState({left:5, bottom: 5});
+  const [isActive, setIsActive] = React.useState(false);
+  const handleClick = () => {
+      setIsActive(current => !current);
+  };
   return (
     <View style={styles.list}>
       <View style={styles.container}>
@@ -95,6 +106,19 @@ export default function WinsCard(props) {
           <Text style={styles.userName}>{props.userName}</Text>
           <Text style={styles.date}>{props.date}</Text>
         </View>
+        <IconButton
+            title="Button"
+            icon="heart"
+            // iconColor={MD3Colors.error50}
+            iconColor={
+              isActive ? '#F39770': 'grey'
+            }
+            size={25}
+            onPress={handleClick}
+            style={{
+            }}
+          >
+        </IconButton>
       </View>
         <View>
           <Text style={styles.wins}>{props.wins}</Text>

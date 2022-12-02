@@ -6,7 +6,9 @@ import TextButton from "../components/common/textbutton";
 
 const styles = StyleSheet.create({
   container: {
-    background: "#efe1d5",
+    // background: "#efe1d5",
+    // background: "rgb(237 225 214)",
+    // background: "red",
     height: "100%",
   },
 
@@ -28,7 +30,8 @@ const styles = StyleSheet.create({
 export default function Landing({ navigation }) {
   const { colors } = useTheme();
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{background: "rgb(237 225 214)"}}>
       <View style={styles.container}>
         <View style={styles.imgCont}>
           <Image
